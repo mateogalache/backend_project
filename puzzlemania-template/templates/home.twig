@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+
+{% block title %}PuzzleMania - Solve Riddles and Challenge Your Mind{% endblock %}
+
+{% block content %}
+    <h1 data-cy="home__welcomeMsg">Hello {{ username }}!</h1>
+    {% if isLoggedIn %}
+    <p>beq</p>
+    {% endif %}
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero__title">Welcome to PuzzleMania</h1>
+            <p class="hero__subtitle">Solve riddles, challenge your mind, and have fun!</p>
+
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="features__title">Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature">
+
+                        <h3 class="feature__title">Challenge Your Mind</h3>
+                        <p class="feature__description">PuzzleMania is the perfect platform to exercise your brain and improve your problem-solving skills.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature">
+
+                        <h3 class="feature__title">Solve Riddles</h3>
+                        <p class="feature__description">With hundreds of challenging riddles to choose from, you'll never run out of brain teasers to solve.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature">
+
+                        <h3 class="feature__title">Compete with Friends</h3>
+                        <p class="feature__description">Challenge your friends and see who can solve riddles the fastest, earning badges and rewards along the way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if username == "stranger" %}
+    <section class="Button">
+        <div class="container">
+
+            <a href="/sign-in" class="btn ">Join Now</a>
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}

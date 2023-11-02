@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ full_url_for('showHome') }}assets/icons/puzzle.ico">
+    {% block head %}
+      {% block styles %}
+        <link rel="stylesheet" href="{{ full_url_for('showHome') }}assets/css/style.css"/>
+      {% endblock %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      {% block header %}
+        <nav class="header">
+          <ul>
+            <li><a href="{{ url_for('showHome') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                </svg>
+              </a></li>
+            <li><a href="{{ url_for('game') }}">Game</a></li>
+            <li><a href="{{ url_for('teams') }}">Teams</a></li>
+            <li><a href="{{ url_for('teamStats') }}">Team stats</a></li>
+            <li><a href="{{ url_for('showRiddles') }}">Riddle</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+          </ul>
+          {% if app.session.get('user_id') %}
+          <ul>
+            <li><a href="{{ url_for('signIn') }}">Log out</a></li>
+          </ul>
+          {% else %}
+          <ul>
+            <li><a href="{{ url_for('signIn') }}">Sign In</a></li>
+            <li><a href="{{ url_for('signUp') }}">Sign Up</a></li>
+          </ul>
+          {% endif %}
+        </nav>
+      {% endblock %}
+    </header>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

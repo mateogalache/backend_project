@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% block title %}Game | PuzzleMania{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="centerIn">
+            {% if title %}
+                <h1 class="title bigger">{{ title }} RIDDLE</h1>
+            {% else %}
+                <h1 class="title">RESULTS</h1>
+            {% endif %}
+
+        </div>
+        <div class="infoGame">
+            <p class="teamNameGame">
+                {{ riddle.riddle }}
+            </p>
+
+            <form action="{{ sendRiddle }}" method="POST" class="inGameForm">
+                {% if next %}
+                    {% if correct %}
+                        <input type="text" name="solution" readonly value="Correct answer. Good job" class="green">
+                    {% else %}
+                        <input type="text" name="solution" readonly value="Incorrect answer. Correct answer: {{ solution }}" class="red">
+                    {% endif %}
+
+                {% else %}
+                    {% if finish %}
+                        <input type="text" name="answer" readonly value="Your team earned {{ points }} points." class="yellow">
+                    {% else %}
+                        <p class="instructions">Answer?</p>
+                        <input type="text" name="answer">
+                    {% endif %}
+
+                {% endif %}
+
+                <input type="submit" value="{{ button }}" class="gameButton" name="{{ button }}">
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

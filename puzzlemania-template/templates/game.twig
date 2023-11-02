@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block title %}Game | PuzzleMania{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="centerIn">
+            <h1 data-cy="game" class="title">LETS PLAY</h1>
+        </div>
+        <div class="infoGame">
+            <p class="teamNameGame">
+                WELCOME {{ team.name }}
+            </p>
+            <p class="instructions">
+                Press the button 'Start Game' and the game will start. Try to answer correctly the riddles and win the PuzzleMania game!
+            </p>
+            <form action="{{ startGame }}" method="POST">
+                <input type="submit" value="Start Game" class="gameButton">
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

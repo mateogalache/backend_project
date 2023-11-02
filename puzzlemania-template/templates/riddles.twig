@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block title %}PuzzleMania - Solve Riddles and Challenge Your Mind{% endblock %}
+
+{% block content %}
+    <div class="generalRiddle">
+        {% if riddles is not empty %}
+            {% for riddle in riddles %}
+                {% for rid in riddle %}
+                    <div class="riddles" id="riddles-list">
+                        <form action="{{ enterRiddle }}" method="POST">
+                            <input type="hidden" name="riddle_riddle" value="{{ rid.riddle }}">
+                            <input type="hidden" name="riddle_answer" value="{{ rid.answer }}">
+                            <input type="hidden" name="riddle_id" value="{{ rid.riddle_id }}">
+                            <input type="hidden" name="riddle_user_id" value="{{ rid.userId }}">
+                            <input type="submit" value="{{rid.riddle}}">
+                        </form>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% else %}
+        <div id="riddles-empty"><p>No riddles available</p><div>
+        {% endif %}
+    </div>
+
+{% endblock %}
